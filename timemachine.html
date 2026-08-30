@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nobita's Time Machine</title>
+</head>
+<body>
+  <h1>Choose Your Destination</h1>
+  <select id="destinationSelect">
+    <option value="school">School</option>
+    <option value="park">Park</option>
+    <option value="future">Future</option>
+  </select>
+  <button onclick="playDestination()">Go!</button>
+
+  <div id="videoBox"></div>
+
+  <script>
+    function playDestination() {
+      const dest = document.getElementById("destinationSelect").value;
+      document.getElementById("videoBox").innerHTML = `
+        <video controls autoplay>
+          <source src="videos/${dest}.mp4" type="video/mp4">
+        </video>
+        <p>Destination: ${dest}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
