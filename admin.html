@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Doraemon Site</title>
+  <style>
+    * { box-sizing: border-box; font-family: sans-serif; }
+    body { background: #f0f4f8; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+    .card { background: white; padding: 20px; border-radius: 12px; border: 2px solid #333; width: 100%; max-width: 500px; margin-bottom: 20px; }
+    h2 { margin-bottom: 15px; color: #00A0E9; }
+    label { font-weight: bold; display: block; margin-top: 10px; }
+    input, select, button { width: 100%; padding: 10px; margin-top: 5px; border-radius: 6px; border: 1px solid #ccc; }
+    button { background: #00A0E9; color: white; font-weight: bold; border: none; cursor: pointer; margin-top: 15px; }
+    .item-list { margin-top: 15px; background: #eee; padding: 10px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+  <h1>Admin Control Dashboard 🛠️</h1>
+
+  <div class="card">
+    <h2>1. Time Machine Destination Manager</h2>
+    <label>Destination Name (e.g. Annual Day 2025):</label>
+    <input type="text" id="dest-name" placeholder="Enter destination title">
+
+    <label>Media Type:</label>
+    <select id="dest-type">
+      <option value="image">Photo</option>
+      <option value="video">Video</option>
+    </select>
+
+    <label>Select Photo/Video File:</label>
+    <input type="file" id="dest-file" accept="image/*,video/*">
+
+    <button onclick="addDestination()">Save to Time Machine</button>
+
+    <div class="item-list">
+      <h3>Current Destinations:</h3>
+      <ul id="dest-list"></ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2. Anywhere Door Video Uploader</h2>
+    <label>Select Birthday Gift Video File:</label>
+    <input type="file" id="door-file" accept="video/*">
+    <button onclick="saveDoorVideo()" style="background: #FF69B4;">Upload Anywhere Door Video</button>
+    <p id="door-status" style="margin-top: 10px; font-weight: bold; color: green;"></p>
+  </div>
+
+  <script>
+    function renderDestinations() {
+      const list = document.getElementById('dest-list');
+      list.innerHTML = '';
+      const destinations = JSON.parse(localStorage.getItem('tm_destinations') || '[]');
+
+      destinations.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${item.name}</strong> (${item.type}) 
+          <button onclick="deleteDest(${index})" style="width: auto; padding: 2px 8px; margin-left: 10px; background: red;">Delete</button>`;
+        list.appendChild(li);
+      });
+    }
+
+    function addDestination() {
+      const name = document.getElementById('dest-name').value;
+      const type = document.getElementById('dest-type').value;
+      const file = document.getElementById('dest-file').files[0];
+
+      if (!name || !file) {
+        alert("Please enter a name and select a file!");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const destinations = JSON.parse(localStorage.getItem('tm_destinations') || '[]');
+        destinations.push({ name: name, type: type, data: e.target.result });
+        localStorage.setItem('tm_destinations', JSON.stringify(destinations));
+        alert("Destination Saved!");
+        renderDestinations();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function deleteDest(index) {
+      const destinations = JSON.parse(localStorage.getItem('tm_destinations') || '[]');
+      destinations.splice(index, 1);
+      localStorage.setItem('tm_destinations', JSON.stringify(destinations));
+      renderDestinations();
+    }
+
+    function saveDoorVideo() {
+      const file = document.getElementById('door-file').files[0];
+      if (!file) {
+        alert("Please choose a video file!");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        localStorage.setItem('anywhere_door_video', e.target.result);
+        document.getElementById('door-status').innerText = "Video successfully uploaded to Anywhere Door!";
+      };
+      reader.readAsDataURL(file);
+    }
+
+    renderDestinations();
+  </script>
+</body>
+</html>
