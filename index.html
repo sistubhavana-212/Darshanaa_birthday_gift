@@ -2,266 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Bestie!</title>
-  <style>
-    :root {
-      --doraemon-blue: #00A0E9;
-      --doraemon-red: #ED1C24;
-      --doraemon-yellow: #FFF100;
-      --doraemon-white: #FFFFFF;
-      --door-pink: #FF69B4;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Comic Sans MS', sans-serif; }
-    body { background-color: var(--doraemon-blue); color: #333; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
-
-    /* --- LANDING PAGE (4D POCKET) --- */
-    #landing-screen {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      background-color: var(--doraemon-blue);
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      z-index: 1000; transition: transform 0.8s ease-in-out;
-    }
-    .landing-belly {
-      width: 320px; height: 320px; background: white; border: 6px solid #000;
-      border-radius: 50%; display: flex; flex-direction: column; align-items: center;
-      justify-content: flex-end; padding-bottom: 20px; position: relative;
-      box-shadow: 0 10px 0 rgba(0,0,0,0.2);
-    }
-    .landing-pocket {
-      width: 240px; height: 120px; background: white; border: 5px solid #000;
-      border-radius: 0 0 120px 120px; cursor: pointer; display: flex;
-      justify-content: center; align-items: center; transition: transform 0.2s;
-    }
-    .landing-pocket:hover { transform: scale(1.05); }
-
-    /* --- MAIN SITE LAYOUT --- */
-    #main-site { width: 100%; max-width: 650px; padding: 20px 15px; display: none; flex-direction: column; align-items: center; }
-
-    header {
-      background: var(--doraemon-red); width: 100%; height: 50px; border-radius: 25px;
-      border: 4px solid #000; position: relative; display: flex; justify-content: center; margin-bottom: 35px;
-    }
-    .bell {
-      width: 45px; height: 45px; background: var(--doraemon-yellow); border-radius: 50%;
-      border: 4px solid #000; position: absolute; bottom: -20px; display: flex;
-      flex-direction: column; align-items: center; justify-content: center;
-    }
-    .bell-line { width: 100%; height: 4px; background: #000; margin-bottom: 2px; }
-    .bell-hole { width: 8px; height: 8px; background: #000; border-radius: 50%; }
-
-    .card {
-      background: white; border: 5px solid #000; border-radius: 30px;
-      width: 100%; padding: 20px; margin-bottom: 25px; text-align: center;
-      box-shadow: 0 8px 0 rgba(0,0,0,0.15);
-    }
-
-    /* --- TIME MACHINE TABLE --- */
-    .tm-table {
-      background: #E0E0E0; border: 4px solid #000; border-radius: 15px;
-      padding: 15px; margin-top: 15px; background-size: cover;
-    }
-    .tm-screen {
-      width: 100%; height: 230px; background: #000; border: 4px solid #333;
-      border-radius: 10px; overflow: hidden; display: flex; justify-content: center; align-items: center;
-    }
-    .tm-screen img, .tm-screen video { width: 100%; height: 100%; object-fit: contain; }
-    .tm-controls { display: flex; gap: 10px; margin-top: 15px; justify-content: center; align-items: center; }
-    .tm-select { padding: 10px; border: 3px solid #000; border-radius: 10px; font-weight: bold; background: var(--doraemon-yellow); }
-
-    /* --- GADGET LAB --- */
-    .canvas-container { position: relative; width: 100%; max-width: 300px; height: 250px; border: 3px dashed #000; margin: 15px auto; background: #fafafa; overflow: hidden; }
-    #user-img { width: 100%; height: 100%; object-fit: cover; transition: all 0.3s; }
-    .gadget-badge { position: absolute; font-weight: bold; background: var(--doraemon-yellow); border: 2px solid #000; padding: 4px 8px; border-radius: 8px; }
-
-    /* --- ANYWHERE DOOR --- */
-    .pink-door-btn {
-      background: var(--door-pink); color: white; border: 4px solid #000;
-      border-radius: 15px; padding: 15px; font-size: 1.2rem; font-weight: bold;
-      cursor: pointer; width: 100%; text-shadow: 1px 1px 0 #000; box-shadow: 0 5px 0 #000;
-    }
-    .pink-door-btn:active { transform: translateY(4px); box-shadow: none; }
-
-    /* --- MODALS --- */
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 2000; }
-    .modal-content { background: white; border: 5px solid #000; border-radius: 20px; padding: 20px; width: 90%; max-width: 500px; text-align: center; position: relative; }
-    .close-btn { position: absolute; top: 10px; right: 10px; background: var(--doraemon-red); color: white; border: 2px solid #000; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-weight: bold; }
-  </style>
+  <title>Happy Birthday Darshana</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <h1>🎉 Happy Birthday Darshana 🎉</h1>
+    <p>From Doraemon, Nobita, Shizuka, Gian, Suneo, and Dorami!</p>
+  </header>
 
-  <div id="landing-screen">
-    <h1 style="color: white; margin-bottom: 20px; text-shadow: 2px 2px 0 #000;">HAPPY BIRTHDAY!</h1>
-    <div class="landing-belly">
-      <p style="font-weight: bold; margin-bottom: 10px;">Tap the Pocket!</p>
-      <div class="landing-pocket" onclick="openWebsite()">
-        <span style="font-size: 2rem;">🔔</span>
-      </div>
-    </div>
-  </div>
+  <!-- Doraemon and Friends Wishing -->
+  <section id="characters">
+    <img src="images/doraemon-birthday.png" 
+         alt="Doraemon and friends wishing Happy Birthday Darshana" 
+         style="max-width:100%; border-radius:12px;">
+  </section>
 
-  <div id="main-site">
-    <header>
-      <div class="bell"><div class="bell-line"></div><div class="bell-hole"></div></div>
-    </header>
+  <!-- Doraemon Flying & Eating Doracakes -->
+  <section id="doraemon-fun">
+    <h2>Doraemon Celebrates!</h2>
+    <video controls autoplay loop>
+      <source src="videos/doraemon-flying.mp4" type="video/mp4">
+    </video>
+    <video controls autoplay loop>
+      <source src="videos/doraemon-doracakes.mp4" type="video/mp4">
+    </video>
+  </section>
 
-    <div class="card">
-      <h1 style="color: var(--doraemon-blue);">BEST FRIEND DASHBOARD</h1>
-      <p style="font-weight:bold; color:#666;">Welcome to Doraemon's World!</p>
-    </div>
+  <!-- Nobita Desk / Time Machine -->
+  <section id="time-machine">
+    <h2>Nobita Desk</h2>
+    <button onclick="openTimeMachine()">Open Nobita Desk</button>
+  </section>
 
-    <div class="card">
-      <h2>⏰ Time Machine Console</h2>
-      <div class="tm-table">
-        <div class="tm-screen" id="tm-display">
-          <p style="color: white;">Select a destination below!</p>
-        </div>
-        <div class="tm-controls">
-          <label style="font-weight: bold;">Destination:</label>
-          <select class="tm-select" id="tm-dropdown" onchange="loadDestination()">
-            <option value="">-- Choose Destination --</option>
-          </select>
-        </div>
-      </div>
-    </div>
+  <!-- 4D Gadget Photo Lab -->
+  <section id="photo-lab">
+    <h2>Upload Your Face</h2>
+    <input type="file" id="faceUpload" accept="image/*">
+    <button onclick="generateAnimation()">Generate Doraemon Animation</button>
+    <div id="animationResult"></div>
+  </section>
 
-    <div class="card">
-      <h2>✨ 4D Gadget Photo Lab</h2>
-      <input type="file" id="photo-upload" accept="image/*" onchange="previewPhoto(event)" style="margin: 10px 0;">
-      
-      <div class="canvas-container" id="canvas-container">
-        <img id="user-img" src="" alt="Upload a picture!" onerror="this.style.display='none'">
-        <div id="bread-note" class="gadget-badge" style="display:none; top: 10px; left: 10px;">🍞 Best Friends Forever!</div>
-        <div id="copter-icon" style="display:none; position: absolute; top: 5px; right: 10px; font-size: 1.5rem;">🚁</div>
-      </div>
+  <!-- Anywhere Door -->
+  <section id="anywhere-door">
+    <h2>Anywhere Door</h2>
+    <img src="images/anywhere-door.png" alt="Anywhere Door" id="doorImage" onclick="openDoorVideo()">
+    <div id="doorVideo"></div>
+  </section>
 
-      <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
-        <button onclick="useMemoryBread()" style="padding: 8px; border: 2px solid #000; border-radius: 8px; background: var(--doraemon-yellow); font-weight: bold;">🍞 Memory Bread</button>
-        <button onclick="useSmallLight()" style="padding: 8px; border: 2px solid #000; border-radius: 8px; background: var(--doraemon-yellow); font-weight: bold;">🔍 Small Light</button>
-        <button onclick="useTakeCopter()" style="padding: 8px; border: 2px solid #000; border-radius: 8px; background: var(--doraemon-yellow); font-weight: bold;">🚁 Take-Copter</button>
-      </div>
-    </div>
-
-    <div class="card" style="background: #FFF0F5;">
-      <h2>🚪 The Anywhere Door</h2>
-      <p style="margin-bottom: 15px; font-size: 0.9rem;">Click below to open your main birthday gift video!</p>
-      <button class="pink-door-btn" onclick="openDoorVideo()">OPEN ANYWHERE DOOR 🌸</button>
-    </div>
-  </div>
-
-  <div id="videoModal" class="modal">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeDoorVideo()">X</button>
-      <h3 style="margin-bottom: 15px; color: var(--door-pink);">Special Birthday Video 🎬</h3>
-      <div id="door-video-container"></div>
-    </div>
-  </div>
-
-  <script>
-    function openWebsite() {
-      document.getElementById('landing-screen').style.transform = 'translateY(-100vh)';
-      document.getElementById('main-site').style.display = 'flex';
-      populateDropdown();
-    }
-
-    function populateDropdown() {
-      const destinations = JSON.parse(localStorage.getItem('tm_destinations') || '[]');
-      const dropdown = document.getElementById('tm-dropdown');
-      dropdown.innerHTML = '<option value="">-- Choose Destination --</option>';
-      
-      destinations.forEach((dest, index) => {
-        const opt = document.createElement('option');
-        opt.value = index;
-        opt.textContent = dest.name;
-        dropdown.appendChild(opt);
-      });
-    }
-
-    function loadDestination() {
-      const index = document.getElementById('tm-dropdown').value;
-      const display = document.getElementById('tm-display');
-      display.innerHTML = '';
-
-      if (index === '') {
-        display.innerHTML = '<p style="color: white;">Select a destination below!</p>';
-        return;
-      }
-
-      const destinations = JSON.parse(localStorage.getItem('tm_destinations') || '[]');
-      const dest = destinations[index];
-
-      if (dest.type === 'image') {
-        display.innerHTML = `<img src="${dest.data}" alt="${dest.name}">`;
-      } else if (dest.type === 'video') {
-        display.innerHTML = `<video src="${dest.data}" controls autoplay></video>`;
-      }
-    }
-
-    function previewPhoto(event) {
-      const img = document.getElementById('user-img');
-      img.src = URL.createObjectURL(event.target.files[0]);
-      img.style.display = 'block';
-    }
-
-    function useMemoryBread() {
-      const note = document.getElementById('bread-note');
-      note.style.display = note.style.display === 'none' ? 'block' : 'none';
-    }
-
-    function useSmallLight() {
-      const img = document.getElementById('user-img');
-      img.style.transform = img.style.transform === 'scale(0.6)' ? 'scale(1)' : 'scale(0.6)';
-    }
-
-    function useTakeCopter() {
-      const copter = document.getElementById('copter-icon');
-      copter.style.display = copter.style.display === 'none' ? 'block' : 'none';
-    }
-
-    function openDoorVideo() {
-      const videoData = localStorage.getItem('anywhere_door_video');
-      const container = document.getElementById('door-video-container');
-      
-      if (videoData) {
-        container.innerHTML = `<video src="${videoData}" controls autoplay style="width: 100%; border-radius: 10px;"></video>`;
-      } else {
-        container.innerHTML = `<p style="padding: 20px;">No video uploaded yet! Use the Admin Dashboard to add your video.</p>`;
-      }
-      
-      document.getElementById('videoModal').style.display = 'flex';
-    }
-
-    function closeDoorVideo() {
-      document.getElementById('videoModal').style.display = 'none';
-      document.getElementById('door-video-container').innerHTML = '';
-    }
-  // SECRET ACCESS KEY
-const SECRET_KEY = "bestie2026"; // You can change this secret word
-
-function checkSecretAccess() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const userKey = urlParams.get('key');
-
-  if (userKey === SECRET_KEY) {
-    // Secret key matches! Unlock the 4D Pocket screen
-    document.getElementById('landing-screen').style.display = 'flex';
-  } else {
-    // Hide everything and block access
-    document.body.innerHTML = `
-      <div style="display:flex; justify-content:center; align-items:center; height:100vh; background:#00A0E9; color:white; font-family:sans-serif; text-align:center; padding:20px;">
-        <div>
-          <h1 style="font-size:3rem; margin-bottom:10px;">🔒 Private Site</h1>
-          <p style="font-size:1.2rem;">This Doraemon birthday surprise is private and invite-only!</p>
-        </div>
-      </div>
-    `;
-  }
-}
-
-// Run check when page loads
-window.onload = checkSecretAccess;
-
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
+
+  
+
